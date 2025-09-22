@@ -24,3 +24,18 @@
 
 ### Assignment
 ** Building a Student Mangement REST APIs, using dependency injection and REST APIs
+
+
+### Good to know basics of for a better Understanding
+ - Dependency Injection
+ - Spring Bean Cycle
+ - POJO
+ - Spring Core
+ - Serverlet
+
+### To have a complete understanding of Springboot and Java Backend Development
+> JPA Annoation
+> Docker
+> Architecture
+> Unit Testing
+> Spring Security
