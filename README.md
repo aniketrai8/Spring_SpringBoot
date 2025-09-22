@@ -23,7 +23,7 @@
  - enviroment variables
 
 ### Assignment
-** Building a Student Mangement REST APIs, using dependency injection and REST APIs
+ <I>Building a Student Mangement REST APIs, using dependency injection and REST APIs</I>
 
 
 ### Good to know basics of for a better Understanding
