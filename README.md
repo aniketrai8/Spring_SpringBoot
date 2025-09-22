@@ -34,8 +34,8 @@
  - Serverlet
 
 ### To have a complete understanding of Springboot and Java Backend Development
-> JPA Annoation
-> Docker
-> Architecture
-> Unit Testing
-> Spring Security
+> JPA Annoation <br>
+> Docker <br>
+> Architecture <br>
+> Unit Testing <br>
+> Spring Security <br>
