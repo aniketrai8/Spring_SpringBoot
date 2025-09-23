@@ -4,6 +4,12 @@ Spring Boot is a Java framework built on top of Spring that simplifies applicati
 
 ![SpringBoot Architecture Overview with a  diagram](https://www.geeksforgeeks.org/springboot/introduction-to-spring-boot/)
 
+### Spring simplies many tasks like
+* Creating web Application
+* Working with Database
+* Managing Transcations
+  
+
 
 ## Task
 ### Overview
@@ -77,5 +83,12 @@ Spring Boot is a Java framework built on top of Spring that simplifies applicati
   //
   }
   ```
-  
+  ## Annotation
+  <b> @SpringBootApplication </b> -
+  - We use SpringBootApplication annotation on the main class. This Single annotation replaces the need for Setting up a manual Spring Application context. <br>
+  - We no longer need to explicitly create an application context using AnnotationCOnfigApllicatonContext as Spring Boot Handles that behind the secnes. <br>
+  - The annotation alone brings in a lot of pre-configured feathures, including automatic component scanning and embedded server confriguation, which would requireed more steps in
+    a Traditional Spring setup
+  <b> @RestControllers </b>
+   - 
   
