@@ -89,6 +89,39 @@ Spring Boot is a Java framework built on top of Spring that simplifies applicati
   - We no longer need to explicitly create an application context using AnnotationCOnfigApllicatonContext as Spring Boot Handles that behind the secnes. <br>
   - The annotation alone brings in a lot of pre-configured feathures, including automatic component scanning and embedded server confriguation, which would requireed more steps in
     a Traditional Spring setup
-  <b> @RestControllers </b>
-   - 
+  <b> @RestControllers </b> -
+  - is a Spring annotation used to define a controller that handles HTTP requests and returns responses directly (usually JSON).
+  ```
+  @RestController
+  public class HelloController {
+
+    @GetMapping("/hello")
+    public String sayHello() {
+        return "Hello, Spring Boot!";
+    }
+  }
+  ```
+
+<b> @AutoWired </b> -
+- It is used for dependency Injection(DI) in Spring.
+- It tells Spring to AUtomatically inject instance of a bean into your class.
+- Avoids manual object creation -> Spring manages it for you
+ 
+
+
+
+
+
+
+
+
+
+### Spring MVC vs SpringBoot
+ ## Spring MVC
+ Spring MVC Framework is a widely used tool for creating scalabale web application, It consits of multiples modules like <ins>Model, View, Controller, Front Controller </ins> 
+ - Model - A model can be an object or collection of objects which basically contains the data of the application.
+ - View - A view is used for displaying the information to the user in a specific format. Spring supports various technologies like freemarker, velocity, and thymeleaf.
+ - Controller - It contains the logical part of the application. @Controller annotation is used to mark that class as a controller.
+ - Front Controller - It remains responsible for managing the flow of the web application. Dispatcher Servlet acts as a front controller in Spring MVC.
   
+Spring MVC confroguation are needed to be done manually, we need to define dependency indivisdually doesnt alllow powerful batch processing system unline Spring Boot
