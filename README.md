@@ -207,16 +207,60 @@ com.example.studentapp
   --------------------------------------------------------------------
   ### IOC -<br>
   Inversion of Control is one of the core concepts of Springboot, it means now the SprinBoot and not the developer holds the power to create objects its called as <I> Inversion of Control </I> <br> It helps create and manage objects inject dependencies and manage their kife cycles.
+  Spring IOC Conntainer is responsible for creating,configuring and managing lifecycle of the objects called Beans.
 
    There are two types of IOC containers in Spring ->
   * <I> Bean Factory </I>
     - It provides basic support for Dependency Injection and Bean lifecycle Mangement
     - It suitable for lightweight application where advanced feathures are not required
   * <I> Application Context </I>
-    - It built on top of BeanFactory Mangement it helps in more enterprise level applications
+    - It built on top of BeanFactory Mangement it helps in more enterprise level applications.
+   
+  <I> In Spring framework, the interface <ins>ApplicationContext</ins> represents the IOC container. The Spring framwwork is responsible for instigating,configuring and assembling objects known as Beans.
+  - The Spring framework provides several implemnetation for the ApplicationContext interface, <ins>AnnotationConfigApplicationContext</ins> , <ins>classPathXmlApplicationContext</ins>, <ins>FileSystemApplicationXML context</ins> and <ins>WebApplication Context </ins> for web based Application
    
   ### DI - <br>
  * Dependency Injection, so when we talk of giving SpringBoot the right to create objects, here IOC is the Principle but DI is the real design Pattern how it is able to achieve this.<br>
- * Dependency Injections are preffered bcoz it helps avoid very tight coupling of classes, as loose couling enable easier testng and manintainabkity of code. 
+ * Dependency Injections are preffered bcoz it helps avoid very tight coupling of classes, as loose couling enable easier testng and manintainabkity of code.
+ * It allows objects to be injected of their dependencies, rather than creating Dependencies urself.
+
+   - <ins> <I>Setter Dependency Injection</I> </ins> ->
+     The Setter Dependency Injection is using the Setter method. This property is injected inside the XML File inside the <property> tag
+
+     ```
+     <bean id= "My Bean" class ="com.example.Aniket">
+     <property name="dependency" ref="myDepdency"/>
+     </bean>
+     ```
+     
+
+   - <ins> <I> Constructor Dependency Injection </I> </ins> ->
+     The Constructor Dependency Injection is passed using the constructor Method. The dependencies are edited inside the XML file iside the
+     <Constructor-arg> tag
+     ```
+     <Bean id =" myBean" class - "com.example.Aniket"
+     <constructor-arg ref ="myDependency/"
+     </bean>
+     ```
+
+  - <ins> <I> Field Based Dependency Injection </I> </ins> ->
+    In case of Field Based DI we inject dependencies by marking it as @Autowired
+
+    ```
+    public class store {
+     @Autowired
+      private Item item
+    }
+    ```
+    why we dont prefer this approach over Constructor and Setter based Dependency Injection is that it is more costlly
+
+    ### <I>Autowiring Dependencies -></I>
+    * Four Models of Autowiring a Bean using XML Confriguation
+      - <B>no : </B>  This means no autowiring for the Bean and we need to explicitly name the Dependencies
+      - <B> byName : </B> This means it is done on the basis of the name of the property.
+      - <B> byType : </B> This is based in the type of the property. This means Bean will look for a Bean with the same type of the property.
+      - <B> constructor : </B> it is based on constructor argument
+      
+    
   
   
