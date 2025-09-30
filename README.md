@@ -262,5 +262,7 @@ com.example.studentapp
       - <B> constructor : </B> it is based on constructor argument
       
     
-  
+## <ins> Application Properties </ins>
+  * [Resource for all Application properties](https://docs.spring.io/spring-boot/appendix/application-properties/index.html)
+  * These
   
