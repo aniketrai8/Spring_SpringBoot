@@ -264,5 +264,24 @@ com.example.studentapp
     
 ## <ins> Application Properties </ins>
   * [Resource for all Application properties](https://docs.spring.io/spring-boot/appendix/application-properties/index.html)
-  * These
+  * These are used to modify and change default server ports, app configuration like name, version.
+  * <ins>Config Package</ins> -> <I> You need a seprate Config package along with Service, Model and Controllers, the <ins> Config package should inlcude a Java Class like AppConfig </ins> that also needs to @Annotations like <I> @Value, @Component </I> to give specific application properties
+  * <ins>Controller -> </ins> -> 
+     ```
+      @GetMapping("/app-info")
+    public String getAppInfo(){
+        return "App: " + appConfig.getAppName()+
+                ", Version: " + appConfig.getAppVersion()+
+                ", Author: " +appConfig.getAppAuthor();
+     ```
+
+### Definations
+  ## ORM
+  - 
+    * ORM like <ins>Hibernate</ins>, are used to help developers interact better with Databases more easily using Object-Oriented Programming
+    * There functionalities include to map the fields in Class to columsn in related Database that helps in easier object Insertion, Deletion, Retrieve and Update.
+    * They are popular due to their Object-Oriented Nature where they help deal with a Structured Database very Effectively. ORM is critical in data interaction simplification, code optimization, and smooth blending of applications and databases.
+   
+      > <b> <ins>Entities</ins> </b>
+       - Entities are to ORM like class and objects are too Java, the ORM carries out the transformation of these entitites into DataBase tables, they provide a smooth communication between the application and the Database underneath.
   
