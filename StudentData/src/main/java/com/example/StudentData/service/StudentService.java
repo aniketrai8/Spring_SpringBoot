@@ -1,7 +1,6 @@
-package com.example.StudentData.Service;
+package com.example.StudentData.service;
 
-
-import com.example.StudentData.Model.Student;
+import com.example.StudentData.model.Student;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

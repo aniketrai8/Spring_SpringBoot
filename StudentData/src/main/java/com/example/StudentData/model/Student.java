@@ -1,4 +1,4 @@
-package com.example.StudentData.Model;
+package com.example.StudentData.model;
 
 
 

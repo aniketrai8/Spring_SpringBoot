@@ -1,6 +1,7 @@
-package com.example.StudentData.Controllers;
-import com.example.StudentData.Model.Student;
-import com.example.StudentData.Service.StudentService;
+package com.example.StudentData.controller;
+import com.example.StudentData.model.Student;
+import com.example.StudentData.service.StudentService;
+import com.example.StudentData.config.AppConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,11 +13,15 @@ import java.util.Optional;
 
 public class StudentController {
     private final StudentService studentService;
+    private final AppConfig appConfig;
+
 
     // Constructor Injection (best practice)
     @Autowired
-    public StudentController(StudentService studentService) {
+    public StudentController(StudentService studentService, AppConfig appConfig) {
+        
         this.studentService = studentService;
+        this.appConfig= appConfig;
     }
 
     @GetMapping
@@ -27,6 +32,14 @@ public class StudentController {
     @GetMapping("/{id}")
     public Optional<Student> getStudentById(@PathVariable Long id) {
         return studentService.getStudentById(id);
+    }
+
+    @GetMapping("/app-info")
+    public String getAppInfo(){
+        return "App: " + appConfig.getAppName()+
+                ", Version: " + appConfig.getAppVersion()+
+                ", Author: " +appConfig.getAppAuthor();
+
     }
 
     @PostMapping
