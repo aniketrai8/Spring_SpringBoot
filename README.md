@@ -280,8 +280,27 @@ public ResponseEntity<Object>getUSer(@PathVariable int userId){
 }
 ```
 * POST -> The POST method is used to create a resource. We have a request body in this method and can also define multiple request.
-* PUT -> The PUT method is used to update an existing resource. 
-* DELETE -> The DELETE method od HTTP is used to remove a resource. We can delete multiple or single record based on wheather they have am ID paramtere or not.      
+  ```
+  @POSTMapping
+  public Student createStudent(@RequestBody Student student) {
+  return studentService.addStudent(student)
+  }
+  ```
+* PUT -> The PUT method is used to update an existing resource.
+  ```
+  @PutMapping("/{id}")
+  public Optional<Student> updateStudent(@PathVariable Long id, @RequestBody Student student){
+  return studentService.updateStudent(id,student);
+  }
+  ```
+* DELETE -> The DELETE method od HTTP is used to remove a resource. We can delete multiple or single record based on wheather they have am ID paramtere or not.
+  ```
+  @DeleteMapping("/{id}")
+  public String deleteStudent(@PathVariable Long id){
+   return studentService.deleteStudent(id) ? "Deleted" : "Not Found";
+  }
+  }
+  ```    
     
 ## <ins> Application Properties </ins>
   * [Resource for all Application properties](https://docs.spring.io/spring-boot/appendix/application-properties/index.html)
@@ -335,4 +354,13 @@ public ResponseEntity<Object>getUSer(@PathVariable int userId){
    
       > <b> <ins>Entities</ins> </b>
        - Entities are to ORM like class and objects are too Java, the ORM carries out the transformation of these entitites into DataBase tables, they provide a smooth communication between the application and the Database underneath.
+       - Maps Java Objects <-> database tables
+     
+  ## JPA
+  - Java Persistence API is a Java Specification for ORM. It does not implement ORM Itself but its just a contract,
+  - JPA is the API/Specification that defines how the ORM should work in JAVA, ORM is the Technique that helps to map objects to tables and automates DB Operations.
+  - Defines Standard annotations, interfaces and rules for ORM.
+  - Spring JPA is a layer built on top of JPA, works with JPA Providers like Hibernate in the background.
+  - 
+    
   
