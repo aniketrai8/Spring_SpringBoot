@@ -12,6 +12,7 @@ public class StudentService {
     private final List<Student> students = new ArrayList<>();
 
     public List<Student> getAllStudents() {
+
         return students;
     }
 
@@ -34,6 +35,7 @@ public class StudentService {
     }
 
     public boolean deleteStudent(Long id) {
+
         return students.removeIf(s -> s.getId().equals(id));
     }
 }
