@@ -156,7 +156,16 @@ public String greetStudent(){
 
 
 ```
- 
+ ### Advance Java vs SpringBoot for Developemnt 
+ * Advance Java usuallu compromises Servlets +JSP + JDBC
+   - Less Boilerplate code
+     * We first had to manually configure web.xml, Servlets,JSP,JDBC etc, SpringBoot has auto confriguation which handles most of it, you can Start REST APIs with just Annoation like @RestControllers and @GetMapping
+   - Built in Server advantage
+     * The SpringBoot eliminates the task of congiguring and running a Tomcat Server on its own, no need for manual deployment and easier developemnt
+  - Annoation Driven Development
+     * Relies heavily on XML Spring Boot uses annotaion like <ins>@Autowired, @Service, @RestComtrollers</ins>
+  -  Database Integration
+     * Uses JDBC mannually, whereas Spring supports Spring Data JPA, Hibernate etc, <ins>@Repository</ins> is enough to Start CURD Operations  
 
 ### Spring MVC vs SpringBoot
  ## Spring MVC
@@ -264,7 +273,7 @@ com.example.studentapp
     
 ## <ins> Application Properties </ins>
   * [Resource for all Application properties](https://docs.spring.io/spring-boot/appendix/application-properties/index.html)
-  * These are used to modify and change default server ports, app configuration like name, version.
+  * These are used to modify and change default <b>Server Confirguation</b>, <b>App configuration</b> (like name, version), <b>Database Confirguation</b> like (mySQL, Hibranate,Mongo DB).
   * <ins>Config Package</ins> -> <I> You need a seprate Config package along with Service, Model and Controllers, the <ins> Config package should inlcude a Java Class like AppConfig </ins> that also needs to @Annotations like <I> @Value, @Component </I> to give specific application properties
   * <ins>Controller -> </ins> -> 
      ```
@@ -274,6 +283,29 @@ com.example.studentapp
                 ", Version: " + appConfig.getAppVersion()+
                 ", Author: " +appConfig.getAppAuthor();
      ```
+     > <b>application.yml Vs application.properties</b>
+      - The applcation.yml is preffered over application.properties as it is more readable comparitevly, YAML is a superset of of JSON and is more structured and readable for complex config.
+      - application.properties follow a key value pair , vs a application.yaml folllow a hirearichal data structure which keeps all realated data together.
+        <ins> application.properties config for a MySQl </ins>
+   
+        ```
+        spring.datasource.url=jdbc:mysql://localhost:3306/mydb
+        spring.datasource.username=root
+        spring.datasource.password=admin
+        spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+        ```
+        <ins> application.yaml config for a MySql </ins>
+        ```
+        spring:
+        datasource:
+         url:jdbc:mysql://${MYSQL_HOST:localhost}:3306/db_example
+         username:springuser
+         driver-class-name:com.mysql.cj.jdbc.Driver
+        jpa:
+         hibernate:
+           ddl-auto: update
+        ```
+        
 
 ### Definations
   ## ORM
