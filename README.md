@@ -269,7 +269,19 @@ com.example.studentapp
       - <B> byName : </B> This means it is done on the basis of the name of the property.
       - <B> byType : </B> This is based in the type of the property. This means Bean will look for a Bean with the same type of the property.
       - <B> constructor : </B> it is based on constructor argument
-      
+     
+  ### <I>Spring Boot - RESTful Web Services -> </I>
+  * GET -> Default request method for HTTP. We can deifne multiople request paramterms or path variables in the URL. This method is used for obtaining some resources.
+```
+@GetMapping("/user/{userId}")
+public ResponseEntity<Object>getUSer(@PathVariable int userId){
+     UserEntity user= userService.getUser(userId);
+     return new ResponseEntity<>(user,HttpStatus.OK);
+}
+```
+* POST -> The POST method is used to create a resource. We have a request body in this method and can also define multiple request.
+* PUT -> The PUT method is used to update an existing resource. 
+* DELETE -> The DELETE method od HTTP is used to remove a resource. We can delete multiple or single record based on wheather they have am ID paramtere or not.      
     
 ## <ins> Application Properties </ins>
   * [Resource for all Application properties](https://docs.spring.io/spring-boot/appendix/application-properties/index.html)
@@ -305,6 +317,13 @@ com.example.studentapp
          hibernate:
            ddl-auto: update
         ```
+
+     ### <ins>HTTP Standard Status Code </ins>
+      - <b>200</b>: Success
+      - <b>201: Created
+      - <b>401: Unathorized
+      - <b>404: Resource not Found
+      - <b>500: Server Error 
         
 
 ### Definations
