@@ -25,6 +25,7 @@ public class Dog {
      * @return a {@link String} message
      */
     public String fun() {
+
         return "something";
     }
 }

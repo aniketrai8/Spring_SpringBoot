@@ -33,6 +33,7 @@ public class MyClass {
      */
     @GetMapping("/ok")
     public String ok() {
+
         return dog.fun();
     }
 }
