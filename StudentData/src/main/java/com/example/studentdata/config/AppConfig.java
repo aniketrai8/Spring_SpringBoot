@@ -1,4 +1,4 @@
-package com.example.StudentData.config;
+package com.example.studentdata.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -44,6 +44,7 @@ public class AppConfig {
      * @return the configured application name
      */
     public String getAppName() {
+
         return appName;
     }
 
@@ -53,6 +54,7 @@ public class AppConfig {
      * @return the configured application version
      */
     public String getAppVersion() {
+
         return appVersion;
     }
 
@@ -62,6 +64,7 @@ public class AppConfig {
      * @return the configured application author
      */
     public String getAppAuthor() {
+
         return appAuthor;
     }
 }

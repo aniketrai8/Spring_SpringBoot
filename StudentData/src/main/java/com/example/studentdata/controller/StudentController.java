@@ -1,8 +1,8 @@
-package com.example.StudentData.controller;
+package com.example.studentdata.controller;
 
-import com.example.StudentData.model.Student;
-import com.example.StudentData.service.StudentService;
-import com.example.StudentData.config.AppConfig;
+import com.example.studentdata.model.Student;
+import com.example.studentdata.service.StudentService;
+import com.example.studentdata.config.AppConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,6 +57,7 @@ public class StudentController {
      */
     @GetMapping
     public List<Student> getAllStudents() {
+
         return studentService.getAllStudents();
     }
 
@@ -68,6 +69,7 @@ public class StudentController {
      */
     @GetMapping("/{id}")
     public Optional<Student> getStudentById(@PathVariable Long id) {
+
         return studentService.getStudentById(id);
     }
 
@@ -88,9 +90,16 @@ public class StudentController {
      *
      * @param student the {@link Student} object to create
      * @return the created {@link Student} object
+     *
+     *
      */
+
+
+
+
     @PostMapping
     public Student createStudent(@RequestBody Student student) {
+
         return studentService.addStudent(student);
     }
 
