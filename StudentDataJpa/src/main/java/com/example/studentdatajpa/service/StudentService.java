@@ -1,5 +1,6 @@
 package com.example.studentdatajpa.service;
 
+import com.example.studentdatajpa.exception.ResourceNotFoundException;
 import com.example.studentdatajpa.repository.StudentRepository;
 import com.example.studentdatajpa.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,25 +34,27 @@ public class StudentService {
         return repository.save(student); //inset/update a row
     }
 
-    public Optional<Student> updateStudent(Long id, Student updated) {
+    public Student updateStudent(Long id, Student updated) {
         return repository.findById(id).map(student -> {
             student.setName(updated.getName());
             student.setAge(updated.getAge());
             student.setCourse(updated.getCourse());
             return repository.save(student);
-        });
+        }).orElseThrow(() -> new ResourceNotFoundException("Student with ID"+id+"not found"));
 
 
     }
 
-    public boolean deleteStudent(Long id) {
+    public void  deleteStudent(Long id) {
 
         if(repository.existsById(id)) {
             repository.deleteById(id);
-            return true;
+
+        } else {
+            throw new ResourceNotFoundException("Student with Id "+id+"Does not exist");
         }
 
-        return false;
+
     }
     public List<Student> findByName(String prefix){
         return repository.findByNameStartingWithIgnoreCase(prefix);

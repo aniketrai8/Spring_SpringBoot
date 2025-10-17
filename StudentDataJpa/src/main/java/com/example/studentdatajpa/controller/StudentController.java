@@ -1,8 +1,8 @@
 package com.example.studentdatajpa.controller;
 
+import com.example.studentdatajpa.exception.ResourceNotFoundException;
 import com.example.studentdatajpa.model.Student;
 import com.example.studentdatajpa.service.StudentService;
-import org.junit.jupiter.api.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 //import io.swagger.v3.oas.annotation.Operations;
@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 
 //@Tag(name = "Student Management API", description = " Handles all CURD operations and search feature")
 @RestController
 @RequestMapping("/students")
-//@Tag(name= "Students",description="Endpoints for managing student records")
+
 public class StudentController {
 
     private final StudentService studentService;
@@ -31,9 +34,19 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    //@Operation (summary = "Get Students by ID" , description = " Returns a single student based on its ID")
-    public Optional<Student> getStudentById(@PathVariable Long id) {
-        return studentService.getStudentById(id);
+    //@Operation(summary = "Get Student by ID", description = "Returns a single student based on its ID")
+    public ResponseEntity<?> getStudentById(@PathVariable Long id) {
+        try {
+            Optional<Student> student = studentService.getStudentById(id);
+            if (student.isPresent()) {
+                return ResponseEntity.ok(student.get());
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body("Student with ID " + id + " not found");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
 
     @PostMapping
@@ -42,15 +55,31 @@ public class StudentController {
     }
 
     @PutMapping("/{id}")
-    public Optional<Student> updateStudent(@PathVariable Long id, @RequestBody Student student) {
-        return studentService.updateStudent(id, student);
+    public ResponseEntity<?> updateStudent(@PathVariable Long id, @RequestBody Student student) {
+        try{
+            Student updated = studentService.updateStudent(id, student);
+            return ResponseEntity.ok(updated);
+
+        }catch(ResourceNotFoundException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch(Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
 
     @DeleteMapping("/{id}")
-    //@Operations(summary ="deleteByID" , description = " Helps to delete student record by id")
-    public String deleteStudent(@PathVariable Long id) {
-        return studentService.deleteStudent(id) ? "Deleted" : "Not Found";
+    //@Operation(summary = "Delete Student", description = "Deletes a student record by ID")
+    public ResponseEntity<?> deleteStudent(@PathVariable Long id) {
+        try {
+            studentService.deleteStudent(id);
+            return ResponseEntity.ok("Deleted");
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
+
 
 
     @GetMapping("/search/name")
