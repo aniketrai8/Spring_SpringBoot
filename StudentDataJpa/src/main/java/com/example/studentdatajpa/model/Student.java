@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity //Helps to mark the class a database entity
-@Table(name = "database")
+@Table(name = "students")
 public class Student {
 
     @Id
