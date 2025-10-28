@@ -362,5 +362,26 @@ public ResponseEntity<Object>getUSer(@PathVariable int userId){
   - Defines Standard annotations, interfaces and rules for ORM.
   - Spring JPA is a layer built on top of JPA, works with JPA Providers like Hibernate in the background.
   - 
-    
-  
+
+ ### Transition to PostgreSql
+ - Changes only required at build.gradle, application.properties and Intialization of the Postgres database through Terminal '
+ - build.gradle
+   ```
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation "org.postgresql:postgresql:42.7.4"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+   ```
+- application.properties
+  ```
+  spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
+  spring.datasource.driver-class-name=org.postgresql.Driver
+  spring.datasource.username=postgres
+  spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+  ```
+  Terminal Intialization -
+  ```
+  psql -U aniket
+  CREATE DATABASE studentdb;
+  CREATE ROLE postgres with LOGIN SUPER PASSWORD 'aniket';
+ 
