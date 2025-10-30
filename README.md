@@ -384,4 +384,20 @@ public ResponseEntity<Object>getUSer(@PathVariable int userId){
   psql -U aniket
   CREATE DATABASE studentdb;
   CREATE ROLE postgres with LOGIN SUPER PASSWORD 'aniket';
+  ```
+
+  ### DTO -
+  * DTO stands for Data Transfer Objects, the use case of DTOs are most importantly is to keep things safe and only expose things are intended to be expose.
+  * DTO is a simple JAVA object who is primarliy function is to transfer data safely between multiple layers
+  * DTO is a way almost how searlization works where we convert one data type into another but the key aspect here is to not give out internal infos like DB details, passwords etc which can be determential for the Client security.
+  * The idea while using it with Entity is to decouple it from the DB schema. The main idea is to have sepration of layers dedicatedly for APIs, DB, Domain models etc
+ 
+    ## Changes made to to convert Entity into DTO are ->
+    * First step is to create a DTO class that only contains the data fields that are allowes to be exposed.
+    * COntroller class is modified to return StudentDTO instead of directly returning Student entity which exposes the DB schema.
+    * Further step is to make a mapper utlity class that allows the smooth conversion to bridge the gap from Student Enity to DTO
+    * DTO are prefferd bcoz of the fact they are persistent. They only live upto the time of yhr request/response, never persisted,unike Entity which are mapped to DB.
+    * Data is constantly taken and given out in DTO format and internally Entities are handeled, and client interacion no longer involve the use of entities
+      
+  
  
