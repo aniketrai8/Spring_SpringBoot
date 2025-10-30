@@ -18,7 +18,7 @@ public class SwaggerConfig {
                          new Info().title("StudentDatabase API")
                          .description("By Aniket")
                  )
-        .servers(Arrays.asList(new Server().url("https://localhost:8080").description("local"),
-                new Server().url("https://localhost8082").description("Live") ));
+        .servers(Arrays.asList(new Server().url("http://localhost:8080").description("local"),
+                new Server().url("http://localhost8082").description("Live") ));
     }
 }

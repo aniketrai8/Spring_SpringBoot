@@ -12,12 +12,14 @@ import java.util.List;
 @Service
 public class StudentService {
     //private final List<Student> students = new ArrayList<>();
-    private final StudentRepository repository;
+    private  final StudentRepository repository;
 
     @Autowired
     public StudentService(StudentRepository repository){
         this.repository = repository;
     }
+
+
 
     public List<Student> getAllStudents() {
 
@@ -29,7 +31,7 @@ public class StudentService {
         return repository.findById(id); //select row by ID
     }
 
-    public Student addStudent(Student student) {
+    public  Student addStudent(Student student) {
 
         return repository.save(student); //inset/update a row
     }

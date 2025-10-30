@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import com.example.studentdatajpa.dto.StudentDTO;
 
 @Entity //Helps to mark the class a database entity
 @Table(name = "students")
